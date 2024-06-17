@@ -1,6 +1,6 @@
 # Encoder-Decoder Trainer
 
-This repository contains code for training and evaluating an encoder-decoder model, primarily designed for sequence-to-sequence tasks. The project includes Jupyter notebooks that guide users through the process of training the model and performing encoding and decoding operations.
+This repository contains code for training an BPE model, primarily designed for the tokenization of low-resource languages. The project includes Jupyter notebooks that guide users through the process of training the model and performing encoding and decoding operations.
 
 ## Table of Contents
 
@@ -17,27 +17,12 @@ This repository contains code for training and evaluating an encoder-decoder mod
 
 ### Overview
 
-The encoder-decoder architecture is a fundamental framework used in various natural language processing (NLP) tasks such as machine translation, text summarization, and question answering. This project provides a hands-on implementation of an encoder-decoder model using Python and popular machine learning libraries.
-
-### Goals
-
-- **Training**: Train an encoder-decoder model on custom datasets for sequence-to-sequence learning tasks.
-- **Evaluation**: Evaluate the performance of the trained model using standard metrics and visualizations.
-- **Encoding and Decoding**: Provide tools for encoding input sequences and decoding output sequences using the trained model.
+The simple BPE program is a Tokenizer. This project provides a hands-on implementation of an BPE model using Python to deal with low-resource languages.
 
 ### Features
 
-- **Customizable Architecture**: Easily modify the encoder and decoder architecture to fit different types of sequence-to-sequence tasks.
 - **Data Handling**: Includes utilities for preprocessing and handling text data, including tokenization and byte pair encoding (BPE).
-
 - **Jupyter Notebooks**: Interactive notebooks that guide users through the entire process, from data preparation to model training and evaluation.
-
-
-### How It Works
-
-1. **Encoder**: The encoder processes the input sequence and compresses the information into a context vector (a fixed-size representation).
-2. **Decoder**: The decoder takes the context vector and generates the output sequence step-by-step.
-3. **Training**: The model is trained to minimize the difference between the predicted output sequence and the actual output sequence using a suitable loss function.
 
 ### Dependencies
 
