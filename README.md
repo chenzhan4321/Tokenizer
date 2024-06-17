@@ -29,14 +29,9 @@ The encoder-decoder architecture is a fundamental framework used in various natu
 
 - **Customizable Architecture**: Easily modify the encoder and decoder architecture to fit different types of sequence-to-sequence tasks.
 - **Data Handling**: Includes utilities for preprocessing and handling text data, including tokenization and byte pair encoding (BPE).
-- **Visualization**: Visualize model performance and predictions with built-in plotting functions.
+
 - **Jupyter Notebooks**: Interactive notebooks that guide users through the entire process, from data preparation to model training and evaluation.
 
-### Use Cases
-
-- **Machine Translation**: Train the model to translate text from one language to another.
-- **Text Summarization**: Generate concise summaries from long-form text.
-- **Sequence Generation**: Create models for generating sequences of text, such as poetry or code.
 
 ### How It Works
 
@@ -48,10 +43,7 @@ The encoder-decoder architecture is a fundamental framework used in various natu
 
 - **Python 3.6+**
 - **Jupyter Notebook**
-- **TensorFlow/PyTorch** (Choose the framework you are using)
 - **NumPy**
-- **Pandas**
-- **Matplotlib**
 
 ## Files in the Repository
 
@@ -67,21 +59,7 @@ To set up the project, follow these steps:
 1. Clone the repository:
 
    \`\`\`bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
-   \`\`\`
-
-2. Create a virtual environment:
-
-   \`\`\`bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows use \`venv\Scripts\activate\`
-   \`\`\`
-
-3. Install the required dependencies:
-
-   \`\`\`bash
-   pip install -r requirements.txt
+   git clone https://github.com/chenzhan4321/Tokenizer.git
    \`\`\`
 
 ## Usage
