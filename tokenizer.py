@@ -14,7 +14,7 @@ def load_vocab(file_path: str) -> Dict[int, str]:
     return {int(k): v for k, v in vocab_data.items()}
 
 def tokenize_text(text: str) -> List[str]:
-    pattern = re.compile(r""" ?ܘ(?=\p{L}+)| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+""")
+    pattern = re.compile(r""" [ܘܒܡܠ](?=\p{L}+)| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+""")
     return re.findall(pattern, text)
 
 def encode_words(words: List[str]) -> List[List[int]]:
@@ -55,8 +55,8 @@ def tokenize_file(input_file: str, merges_file: str, vocab_file: str, output_fil
         f.write(output_text)
     
     print(f"\nTokenized text saved to {output_file}")
-    print(f"Sample of tokenized text (first 10 tokens):")
-    print('.'.join(decoded_tokens[:10]))
+    print(f"Sample of tokenized text (first n tokens):")
+    print('.'.join(decoded_tokens[:50]))
 
 if __name__ == "__main__":
     current_directory = os.getcwd()

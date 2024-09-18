@@ -11,7 +11,7 @@ def read_file(file_path: str) -> str:
 # Text tokenization
 def tokenize_text(text: str) -> List[str]:
     # Compile a regex pattern for tokenization
-    pattern = re.compile(r""" ?ܘ(?=\p{L}+)| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+""")
+    pattern = re.compile(r""" [ܘܒܡܠ](?=\p{L}+)| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s+""")
     tokens = re.findall(pattern, text)
     return [token for token in tokens]
 
@@ -77,7 +77,9 @@ def main():
         stats = get_stats(ids)
         pair = max(stats, key=stats.get)
         idx = 256 + i
-        print(f"Merge {i+1}: pair {pair} -> {idx}")
+        syriac_pair = (vocab[pair[0]].decode('utf-8', errors='ignore'), vocab[pair[1]].decode('utf-8', errors='ignore'))
+        syriac_merged = (vocab[pair[0]] + vocab[pair[1]]).decode('utf-8', errors='ignore')
+        print(f"Merge {i+1}: pair {pair} ({syriac_pair}) -> {idx} ({syriac_merged})")
         ids = merge(ids, pair, idx)
         merges[pair] = idx
         vocab[idx] = vocab[pair[0]] + vocab[pair[1]]
