@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.DS_Store
+.env
+.venv
+arm_env/
+output_folder/
+tokenized_output.txt
