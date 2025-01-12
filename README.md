@@ -1,101 +1,111 @@
-# Encoder-Decoder Trainer
+# BPE分词器
 
-This repository contains code for training an BPE model, primarily designed for the tokenization of low-resource languages. The project includes Jupyter notebooks that guide users through the process of training the model and performing encoding and decoding operations.
+这是一个专门为低资源语言设计的BPE（字节对编码）分词模型训练工具。本项目包含了训练模型和进行编码解码操作的完整代码实现。
 
-## Table of Contents
+## 目录
 
-- [Project Description](#project-description)
-- [Files in the Repository](#files-in-the-repository)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Vocabulary and Merges](#vocabulary-and-merges)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
+- [项目描述](#项目描述)
+- [项目文件](#项目文件)
+- [安装说明](#安装说明)
+- [使用方法](#使用方法)
+- [词汇表和合并规则](#词汇表和合并规则)
+- [贡献指南](#贡献指南)
+- [许可证](#许可证)
 
-## Project Description
+## 项目描述
 
-### Overview
+### 概述
 
-The simple BPE program is a Tokenizer. This project provides a hands-on implementation of an BPE model using Python to deal with low-resource languages.
+这是一个简单的BPE分词器实现，使用Python开发，专门用于处理低资源语言的分词需求。本项目提供了完整的训练流程和使用方法。
 
-### Features
+### 特点
 
-- **Data Handling**: Includes utilities for preprocessing and handling text data, including tokenization and byte pair encoding (BPE).
-- **Jupyter Notebooks**: Interactive notebooks that guide users through the entire process, from data preparation to model training and evaluation.
+- **数据处理**：包含完整的文本预处理和处理工具，包括分词和字节对编码（BPE）
+- **代码实现**：提供了训练器（trainer.py）和分词器（tokenizer.py）两个主要模块
+- **示例文件**：包含示例数据和完整的使用说明
 
-### Dependencies
+### 环境要求
 
-- **Python 3.6+**
-- **Jupyter Notebook**
-- **NumPy**
+- Python 3.6+
+- regex库
+- json库
 
-## Files in the Repository
+## 项目文件
 
-- `Trainer_0.1.ipynb`: Jupyter notebook for training the encoder-decoder model.
-- `En-decoder.ipynb`: Jupyter notebook for encoding and decoding sequences.
-- `vocabulary_{vocab_size}.json`: JSON file containing the vocabulary.
-- `merges_{vocab_size}.json`: JSON file containing the merges information.
+- `trainer.py`: BPE模型训练程序
+- `tokenizer.py`: 分词程序
+- `vocabulary_{vocab_size}.json`: 词汇表文件
+- `merges_{vocab_size}.json`: 合并规则文件
 
-## Installation
+## 安装说明
 
-To set up the project, follow these steps:
-
-1. Clone the repository:
-
-   \`\`\`bash
+1. 克隆仓库：
+   ```bash
    git clone https://github.com/chenzhan4321/Tokenizer.git
-   \`\`\`
+   ```
 
-## Usage
+2. 安装依赖：
+   ```bash
+   pip install regex
+   ```
 
-### Training the Model
+## 使用方法
 
-1. Open the `Trainer_0.1.ipynb` notebook in Jupyter:
+### 训练模型
 
-   \`\`\`bash
-   jupyter notebook Trainer_0.1.ipynb
-   \`\`\`
+1. 准备训练数据，放入 `Training Set` 文件夹
+2. 运行训练程序：
+   ```bash
+   python trainer.py
+   ```
+3. 训练完成后会生成词汇表和合并规则文件
 
-2. Follow the instructions in the notebook to train the encoder-decoder model.
+### 使用分词器
 
-### Encoding and Decoding Sequences
+1. 准备需要分词的文本文件
+2. 运行分词程序：
+   ```bash
+   python tokenizer.py
+   ```
+3. 查看分词结果
 
-1. Open the `En-decoder.ipynb` notebook in Jupyter:
+## 词汇表和合并规则
 
-   \`\`\`bash
-   jupyter notebook En-decoder.ipynb
-   \`\`\`
+### 词汇表（vocabulary_{vocab_size}.json）
+- 包含所有基础字符和BPE合并后的子词单元
+- 格式：`{token_id: token_text}`
+- 示例：
+  ```json
+  {
+    "32": " ",
+    "256": "ܫܠܡ",
+    "257": "ܒܝܬ"
+  }
+  ```
 
-2. Follow the instructions in the notebook to encode and decode sequences.
+### 合并规则（merges_{vocab_size}.json）
+- 记录BPE训练过程中的合并操作
+- 格式：`{(token1, token2): new_token_id}`
+- 示例：
+  ```json
+  {
+    "(220, 171)": 256,
+    "(220, 160)": 257
+  }
+  ```
 
-## Vocabulary and Merges
+## 特别说明
 
-The `vocabulary_{vocab_size}.json` file contains the vocabulary used by the model, where each byte value is decoded to a UTF-8 string. The `merges_{vocab_size}.json` file contains the merges information necessary for byte pair encoding.
+1. 空格作为特殊token（ASCII 32）在整个过程中被保留
+2. 支持叙利亚文等特殊语言的处理
+3. 提供了详细的分词示例和结果展示
 
-### Example of Vocabulary Conversion
+## 贡献指南
 
-Here is an example of how the vocabulary is converted:
+欢迎提交问题和改进建议！请通过以下方式参与：
+1. 提交Issue报告问题
+2. 提交Pull Request贡献代码
 
-\`\`\`python
-import json
+## 许可证
 
-# Load vocabulary
-with open('vocabulary_{vocab_size}.json', 'r', encoding='utf-8') as file:
-    vocab = json.load(file)
-
-# Display the vocabulary
-print(vocab)
-\`\`\`
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request with any changes.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
-## Acknowledgements
-
-We would like to thank all the contributors to this project.
+本项目采用 MIT 许可证，详见 [LICENSE](LICENSE) 文件。
